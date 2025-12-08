@@ -1,8 +1,11 @@
 package de.larsensmods.lmcc.platform;
 
+import de.larsensmods.lmcc.api.registry.IWrappedRegister;
 import de.larsensmods.lmcc.platform.services.IRegistryHelper;
+import de.larsensmods.lmcc.registry.FabricWrappedRegister;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -15,30 +18,7 @@ import java.util.function.Supplier;
 public class FabricRegistryHelper implements IRegistryHelper {
 
     @Override
-    public <T extends Entity> Supplier<EntityType<T>> registerEntityType(String entityID, Supplier<EntityType<T>> entityTypeSupplier) {
-        EntityType<T> entityType = Registry.register(BuiltInRegistries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(modID, entityID), entityTypeSupplier.get());
-        return () -> entityType;
+    public <R> IWrappedRegister<R> getWrappedRegister(ResourceKey<Registry<R>> key, String modID) {
+        return new FabricWrappedRegister<>(modID, key);
     }
-
-    @Override
-    public Supplier<Item> registerItem(String itemID, Function<Item.Properties, Item> factory, Item.Properties properties) {
-        Item item = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(modID, itemID), factory.apply(properties));
-        return () -> item;
-    }
-
-    //MOD ID REGISTRATION AND SETUP PART
-    private String modID = null;
-
-    @Override
-    public IRegistryHelper withModID(@NotNull String modID) {
-        if(this.modID == null){
-            this.modID = modID;
-        }else if(!this.modID.equals(modID)){
-            FabricRegistryHelper newIdHelper = new FabricRegistryHelper();
-            newIdHelper.modID = modID;
-            return newIdHelper;
-        }
-        return this;
-    }
-
 }
