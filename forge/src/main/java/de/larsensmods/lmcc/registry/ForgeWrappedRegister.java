@@ -1,6 +1,6 @@
 package de.larsensmods.lmcc.registry;
 
-import de.larsensmods.lmcc.api.registry.IWrappedRegister;
+import de.larsensmods.lmcc.api.registry.DeferredSupplier;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -19,8 +19,8 @@ public class ForgeWrappedRegister<T> implements IWrappedRegister<T> {
     }
 
     @Override
-    public <O extends T> Supplier<O> register(String name, Supplier<? extends O> supplier) {
-        return this.register.register(name, supplier);
+    public <O extends T> DeferredSupplier<O> register(String name, Supplier<? extends O> supplier) {
+        return new ForgeSupplier<>(this.register.register(name, supplier));
     }
 
     @Override

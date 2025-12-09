@@ -1,0 +1,5 @@
+accessWidener v2 named
+
+accessible field net/minecraft/world/item/SpawnEggItem BY_ID Ljava/util/Map;
+accessible field net/minecraft/world/item/SpawnEggItem defaultType Lnet/minecraft/world/entity/EntityType;
+mutable field net/minecraft/world/item/SpawnEggItem defaultType Lnet/minecraft/world/entity/EntityType;

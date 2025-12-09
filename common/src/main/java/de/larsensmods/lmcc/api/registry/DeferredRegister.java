@@ -1,6 +1,7 @@
 package de.larsensmods.lmcc.api.registry;
 
 import de.larsensmods.lmcc.platform.Services;
+import de.larsensmods.lmcc.registry.IWrappedRegister;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 
@@ -18,7 +19,7 @@ public class DeferredRegister<T> {
         this.modID = modID;
     }
 
-    public <O extends T> Supplier<O> register(String name, Supplier<? extends O> supplier){
+    public <O extends T> DeferredSupplier<O> register(String name, Supplier<? extends O> supplier){
         return this.wrappedRegister.register(name, supplier);
     }
 

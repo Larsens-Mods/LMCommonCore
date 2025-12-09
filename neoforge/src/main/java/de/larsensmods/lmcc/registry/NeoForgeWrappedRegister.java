@@ -1,7 +1,6 @@
 package de.larsensmods.lmcc.registry;
 
 import de.larsensmods.lmcc.LMCCore;
-import de.larsensmods.lmcc.api.registry.IWrappedRegister;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -19,8 +18,8 @@ public class NeoForgeWrappedRegister<T> implements IWrappedRegister<T> {
     }
 
     @Override
-    public <O extends T> Supplier<O> register(String name, Supplier<? extends O> supplier) {
-        return this.register.register(name, supplier);
+    public <O extends T> NeoForgeSupplier<O> register(String name, Supplier<? extends O> supplier) {
+        return new NeoForgeSupplier<>(this.register.register(name, supplier));
     }
 
     @Override

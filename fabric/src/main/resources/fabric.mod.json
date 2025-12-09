@@ -23,6 +23,7 @@
     "${mod_id}.mixins.json",
     "${mod_id}.fabric.mixins.json"
   ],
+  "accessWidener": "lmcc.accesswidener",
   "depends": {
     "fabricloader": ">=${fabric_loader_version}",
     "fabric-api": "*",

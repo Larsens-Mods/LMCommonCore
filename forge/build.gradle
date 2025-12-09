@@ -87,3 +87,10 @@ sourceSets.each {
     it.output.resourcesDir = dir
     it.java.destinationDirectory = dir
 }
+
+processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+sourcesJar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}

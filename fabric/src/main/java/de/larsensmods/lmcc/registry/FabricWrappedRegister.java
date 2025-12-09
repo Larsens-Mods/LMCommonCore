@@ -1,6 +1,6 @@
 package de.larsensmods.lmcc.registry;
 
-import de.larsensmods.lmcc.api.registry.IWrappedRegister;
+import de.larsensmods.lmcc.api.registry.DeferredSupplier;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
@@ -20,9 +20,9 @@ public class FabricWrappedRegister<T> implements IWrappedRegister<T> {
 
 
     @Override
-    public <O extends T> Supplier<O> register(String name, Supplier<? extends O> supplier) {
+    public <O extends T> DeferredSupplier<O> register(String name, Supplier<? extends O> supplier) {
         O registeredObject = Registry.register(this.registry, ResourceLocation.fromNamespaceAndPath(this.modID, name), supplier.get());
-        return () -> registeredObject;
+        return new FabricSupplier<>(registeredObject);
     }
 
     @Override
