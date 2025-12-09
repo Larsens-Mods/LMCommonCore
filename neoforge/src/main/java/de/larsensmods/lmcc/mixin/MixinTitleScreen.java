@@ -1,6 +1,6 @@
 package de.larsensmods.lmcc.mixin;
 
-import de.larsensmods.lmcc.Constants;
+import de.larsensmods.lmcc.LMCCConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,7 +13,7 @@ public class MixinTitleScreen {
 
     @Inject(at = @At("HEAD"), method = "init()V")
     private void init(CallbackInfo info) {
-        Constants.LOG.info("This line is printed by the LMCommonCore mixin from NeoForge!");
-        Constants.LOG.info("MC Version: {}", Minecraft.getInstance().getVersionType());
+        LMCCConstants.LOG.info("This line is printed by the LMCommonCore mixin from NeoForge!");
+        LMCCConstants.LOG.info("MC Version: {}", Minecraft.getInstance().getVersionType());
     }
 }

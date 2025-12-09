@@ -1,6 +1,6 @@
 package de.larsensmods.lmcc.registry;
 
-import de.larsensmods.lmcc.Constants;
+import de.larsensmods.lmcc.LMCCConstants;
 import de.larsensmods.lmcc.api.registry.DeferredSupplier;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -45,7 +45,7 @@ public class NeoForgeSupplier<T> implements DeferredSupplier<T> {
         }
     }
 
-    @EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+    @EventBusSubscriber(modid = LMCCConstants.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
     private static class CommonHandler {
         @SubscribeEvent
         public static void onCommonSetup(FMLCommonSetupEvent event) {

@@ -12,7 +12,7 @@ public class LMCCore implements ModInitializer {
         // project.
 
         // Use Fabric to bootstrap the Common mod.
-        Constants.LOG.info("Hello Fabric world!");
+        LMCCConstants.LOG.info("Hello Fabric world!");
         LMCCoreCommon.init();
     }
 }

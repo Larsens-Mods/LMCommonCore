@@ -3,7 +3,7 @@ package de.larsensmods.lmcc;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 
-@Mod(Constants.MOD_ID)
+@Mod(LMCCConstants.MOD_ID)
 public class LMCCore {
 
     private static IEventBus modBus;
@@ -11,7 +11,7 @@ public class LMCCore {
     public LMCCore(IEventBus eventBus) {
         modBus = eventBus;
 
-        Constants.LOG.info("Hello NeoForge world!");
+        LMCCConstants.LOG.info("Hello NeoForge world!");
         LMCCoreCommon.init();
     }
 

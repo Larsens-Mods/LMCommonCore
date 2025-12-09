@@ -1,6 +1,6 @@
 package de.larsensmods.lmcc.registry;
 
-import de.larsensmods.lmcc.Constants;
+import de.larsensmods.lmcc.LMCCConstants;
 import de.larsensmods.lmcc.api.registry.DeferredSupplier;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -45,7 +45,7 @@ public class ForgeSupplier<T> implements DeferredSupplier<T> {
         }
     }
 
-    @Mod.EventBusSubscriber(modid = Constants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+    @Mod.EventBusSubscriber(modid = LMCCConstants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
     private static class CommonHandler {
         @SubscribeEvent
         public static void onCommonSetup(FMLCommonSetupEvent event) {

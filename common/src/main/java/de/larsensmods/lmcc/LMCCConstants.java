@@ -3,7 +3,7 @@ package de.larsensmods.lmcc;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Constants {
+public class LMCCConstants {
 
     public static final String MOD_ID = "lmcc";
     public static final String MOD_NAME = "LMCommonCore";
