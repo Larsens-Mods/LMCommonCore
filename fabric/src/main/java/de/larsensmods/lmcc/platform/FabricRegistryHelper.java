@@ -7,9 +7,9 @@ import de.larsensmods.lmcc.registry.FabricWrappedRegister;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.level.levelgen.Heightmap;
 
 import java.util.function.Supplier;
 
@@ -21,7 +21,12 @@ public class FabricRegistryHelper implements IRegistryHelper {
     }
 
     @Override
-    public void registerToEntityAttributeRegistry(DeferredSupplier<? extends EntityType<? extends LivingEntity>> entityType, Supplier<AttributeSupplier> attributes) {
+    public <T extends LivingEntity> void registerToEntityAttributeRegistry(DeferredSupplier<EntityType<T>> entityType, Supplier<AttributeSupplier> attributes) {
         FabricDefaultAttributeRegistry.register(entityType.get(), attributes.get());
+    }
+
+    @Override
+    public <T extends Mob> void registerToSpawnPlacementsRegistry(DeferredSupplier<EntityType<T>> entityType, SpawnPlacementType spawnPlacementType, Heightmap.Types heightmapType, SpawnPlacements.SpawnPredicate<T> predicate) {
+        SpawnPlacements.register(entityType.get(), spawnPlacementType, heightmapType, predicate);
     }
 }

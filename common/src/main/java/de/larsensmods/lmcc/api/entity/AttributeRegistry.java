@@ -18,7 +18,7 @@ public class AttributeRegistry {
      * @param entityType Entity type to register the attributes for
      * @param attributes The attributes to register for the type
      */
-    public static void register(DeferredSupplier<? extends EntityType<? extends LivingEntity>> entityType, Supplier<AttributeSupplier> attributes){
+    public static <T extends LivingEntity> void register(DeferredSupplier<EntityType<T>> entityType, Supplier<AttributeSupplier> attributes){
         Services.REGISTRY.registerToEntityAttributeRegistry(entityType, attributes);
     }
 
