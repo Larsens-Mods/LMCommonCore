@@ -21,8 +21,9 @@ public class FabricWrappedRegister<T> implements IWrappedRegister<T> {
 
     @Override
     public <O extends T> DeferredSupplier<O> register(String name, Supplier<? extends O> supplier) {
-        O registeredObject = Registry.register(this.registry, ResourceLocation.fromNamespaceAndPath(this.modID, name), supplier.get());
-        return new FabricSupplier<>(registeredObject);
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(this.modID, name);
+        O registeredObject = Registry.register(this.registry, id, supplier.get());
+        return new FabricSupplier<>(registeredObject, this.registry, id);
     }
 
     @Override

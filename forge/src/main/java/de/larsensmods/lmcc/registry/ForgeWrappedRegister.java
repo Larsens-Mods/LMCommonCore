@@ -2,7 +2,9 @@ package de.larsensmods.lmcc.registry;
 
 import de.larsensmods.lmcc.api.registry.DeferredSupplier;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 
@@ -12,15 +14,17 @@ public class ForgeWrappedRegister<T> implements IWrappedRegister<T> {
 
     private final String modID;
     private final DeferredRegister<T> register;
+    private final Registry<T> registry;
 
     public ForgeWrappedRegister(String modID, ResourceKey<Registry<T>> registryKey) {
         this.modID = modID;
         this.register = DeferredRegister.create(registryKey, modID);
+        this.registry = (Registry<T>) BuiltInRegistries.REGISTRY.get(registryKey.location());
     }
 
     @Override
     public <O extends T> DeferredSupplier<O> register(String name, Supplier<? extends O> supplier) {
-        return new ForgeSupplier<>(this.register.register(name, supplier));
+        return new ForgeSupplier<>(this.register.register(name, supplier), this.registry, ResourceLocation.fromNamespaceAndPath(modID, name));
     }
 
     @Override
