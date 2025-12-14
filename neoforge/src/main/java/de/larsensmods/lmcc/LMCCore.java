@@ -11,7 +11,6 @@ public class LMCCore {
     public LMCCore(IEventBus eventBus) {
         modBus = eventBus;
 
-        LMCCConstants.LOG.info("Hello NeoForge world!");
         LMCCoreCommon.init();
     }
 

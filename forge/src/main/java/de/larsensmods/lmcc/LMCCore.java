@@ -7,7 +7,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class LMCCore {
 
     public LMCCore() {
-        LMCCConstants.LOG.info("Hello Forge world!");
         LMCCoreCommon.init();
 
         FMLJavaModLoadingContext.get().getModEventBus();

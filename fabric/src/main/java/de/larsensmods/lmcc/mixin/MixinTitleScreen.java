@@ -13,7 +13,7 @@ public class MixinTitleScreen {
 
     @Inject(at = @At("HEAD"), method = "init()V")
     private void init(CallbackInfo info) {
-        LMCCConstants.LOG.info("This line is printed by the LMCommonCore mixin from Fabric!");
-        LMCCConstants.LOG.info("MC Version: {}", Minecraft.getInstance().getVersionType());
+        /*LMCCConstants.LOG.info("This line is printed by the LMCommonCore mixin from Fabric!");
+        LMCCConstants.LOG.info("MC Version: {}", Minecraft.getInstance().getVersionType());*/
     }
 }
