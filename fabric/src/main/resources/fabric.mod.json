@@ -8,8 +8,8 @@
     "${mod_author}"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://larsensmods.de/",
+    "sources": "https://github.com/Larsens-Mods/LMCommonCore"
   },
   "license": "${license}",
   "icon": "${mod_id}.png",
