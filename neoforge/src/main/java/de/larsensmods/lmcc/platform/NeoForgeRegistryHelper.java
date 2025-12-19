@@ -13,6 +13,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -51,12 +52,12 @@ public class NeoForgeRegistryHelper implements IRegistryHelper {
             }
         }
 
-        /*@SubscribeEvent
-        public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
-            for(SpawnPlacementRegistryWrapper<? extends Mob> wrapper : spawnPlacements){
+        @SubscribeEvent
+        public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
+            for(SpawnPlacementRegistryWrapper<? extends Mob> wrapper : spawnPlacements) {
                 wrapper.register(event);
             }
-        }*/
+        }
     }
 
     private static class SpawnPlacementRegistryWrapper<T extends Mob> {
@@ -72,8 +73,8 @@ public class NeoForgeRegistryHelper implements IRegistryHelper {
             this.predicate = predicate;
         }
 
-        /*private void register(SpawnPlacementRegisterEvent event){
-            event.register(entityType.get(), spawnPlacementType, heightmapType, predicate, SpawnPlacementRegisterEvent.Operation.REPLACE);
-        }*/
+        private void register(RegisterSpawnPlacementsEvent event){
+            event.register(entityType.get(), spawnPlacementType, heightmapType, predicate, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        }
     }
 }
