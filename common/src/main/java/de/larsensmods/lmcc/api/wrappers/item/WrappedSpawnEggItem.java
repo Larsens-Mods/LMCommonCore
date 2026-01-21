@@ -13,10 +13,15 @@ import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Wrapper class for Minecraft's {@link SpawnEggItem} to enable cross loader support for spawn eggs
  */
 public class WrappedSpawnEggItem extends SpawnEggItem {
+
+    public static final Set<WrappedSpawnEggItem> MODDED_EGGS = new HashSet<>();
 
     private final DeferredSupplier<? extends EntityType<? extends Mob>> entityTypeSupplier;
 
@@ -38,6 +43,7 @@ public class WrappedSpawnEggItem extends SpawnEggItem {
 
             DispenserBlock.registerBehavior(this, DEFAULT_DISPENSE_BEHAVIOR);
         });
+        MODDED_EGGS.add(this);
     }
 
     @Override
